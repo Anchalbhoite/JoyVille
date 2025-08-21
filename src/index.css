@@ -1,0 +1,222 @@
+:root {
+  color-scheme: light dark;
+  color: rgba(0, 0, 0, 0.87); /* Darker text for better contrast on bright bg */
+  background: none; /* Remove forced dark/light backgrounds */
+}
+
+body {
+  margin: 0;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  background: none; /* Let AnimatedBackground control bg */
+  overflow: hidden; /* Prevent scrollbars from floating emojis */
+}
+
+h1, h2, h3, h4, h5, h6, p, span {
+  margin: 0;
+  padding: 0px;
+  color: inherit;
+  
+  font-family: 'Comic Neue', 'Comic Sans MS', cursive;
+}
+
+a {
+  font-weight: 500;
+  color: #0077ff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #0055cc;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1.5rem;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #f311d1fe;
+  color: white;
+  cursor: pointer;
+  margin-right: 20px;
+  margin-top: 10px;
+  transition: background-color 0.25s;
+}
+button:hover {
+  background-color: #0055cc;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+/* Use kid-friendly font globally */
+body, #root {
+  font-family: 'Comic Neue', 'Comic Sans MS', cursive;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background: transparent;
+}
+
+/* Increase text size & line spacing for kid readability */
+.app-container p, 
+.app-container h1, 
+.app-container h2, 
+.app-container h3, 
+.app-container span {
+  line-height: 1.8; /* more spacing between lines */
+}
+
+.app-container h1 {
+  font-size: 3rem; /* bigger title */
+}
+
+.app-container p {
+  font-size: 1.3rem; 
+  padding: 0.75em 1.5em;
+}
+
+button {
+  font-size: 1.25rem; /* bigger buttons */
+ 
+
+}
+.music-button {
+  position: absolute;
+  top: 1rem; /* 16px from top */
+  right: 1rem; /* 16px from right */
+  width: 2.5rem; /* 40px */
+  height: 2.5rem; /* 40px */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f311d1fe;
+  color: #333; /* dark icon color */
+  font-size: 1.2rem;
+  border-radius: 50%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+  z-index: 50;
+}
+
+.music-button:hover {
+  transform: scale(1.2);
+  background-color: #f311d1fe; 
+}
+/* Sentiment Analysis Styles */
+.sentiment-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 2rem;
+}
+
+.sentiment-title {
+  font-size: 3rem;
+  color: #9b59b6;
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+  margin-bottom: 1rem;
+  animation: pulse 2s infinite;
+}
+
+.sentiment-instruction {
+  font-size: 1.4rem;
+  color: #6c3483;
+  text-align: center;
+  margin-bottom: 2rem;
+  line-height: 1.8;
+}
+
+.sentiment-input {
+  width: 100%;
+  max-width: 500px;
+  padding: 1.5rem 2rem;
+  font-size: 1.5rem;
+  border-radius: 20px;
+  border: 3px solid #f7dc6f;
+  background-color: #fffacd;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  outline: none;
+  transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
+}
+
+.sentiment-input:focus {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(255, 215, 0, 0.5);
+  border-color: #ffb800;
+  background-color: #fff8b0;
+}
+
+.sentiment-btn {
+  margin-top: 1.5rem;
+  padding: 1rem 2rem;
+  font-size: 1.3rem;
+  border-radius: 50px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.analyze-btn {
+  background-color: #ffdf5d;
+  color: #6e2c00;
+}
+
+.analyze-btn:hover {
+  transform: scale(1.1);
+  background-color: #ffd700;
+}
+
+.next-btn {
+  background-color: #58d68d;
+  color: white;
+}
+
+.next-btn:hover {
+  transform: scale(1.1);
+  background-color: #2ecc71;
+}
+
+.sentiment-result {
+  margin-top: 1.5rem;
+  padding: 1.5rem 2rem;
+  background-color: #dcd6f7;
+  border-radius: 20px;
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: bold;
+  box-shadow: inset 0 5px 10px rgba(0,0,0,0.1);
+}
+
+.sentiment-text {
+  color: #7d3c98;
+  margin-left: 0.5rem;
+}
+
+.sentiment-emoji {
+  display: block;
+  font-size: 4rem;
+  margin-top: 1rem;
+  animation: bounce 1s infinite;
+}
+
+/* Animations */
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
