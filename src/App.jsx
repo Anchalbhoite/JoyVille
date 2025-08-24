@@ -1,21 +1,21 @@
 import React, { useState, useEffect, useRef } from "react";
+import { Routes, Route } from "react-router-dom";
 import IntroScreen from "./components/IntroScreen";
 import ExerciseDragDrop from "./components/ExerciseDragDrop";
 import ExerciseQuiz from "./components/ExerciseQuiz";
 import ResultScreen from "./components/ResultScreen";
-import SentimentExplorer from "./components/SentimentExplorer"; 
 import StoryActivity from "./components/StoryActivity";
 import AnimatedBackground from "./components/AnimatedBackground";
+import MiniGames from "./Minigame/MiniGames";
+import FruitColoring from "./Minigame/FruitColoring";
 
-// Import your music
 import kidMusic from "./assets/kid.mp3";
 
 export default function App() {
-  const [step, setStep] = useState(0);
+  const [step, setStep] = useState(1); // start at 1 when inside quiz
   const [score, setScore] = useState(0);
   const [total, setTotal] = useState(0);
   const [isMuted, setIsMuted] = useState(false);
-
   const audioRef = useRef(null);
 
   useEffect(() => {
@@ -32,12 +32,8 @@ export default function App() {
 
   const toggleMusic = () => {
     if (!audioRef.current) return;
-
-    if (isMuted) {
-      audioRef.current.play();
-    } else {
-      audioRef.current.pause();
-    }
+    if (isMuted) audioRef.current.play();
+    else audioRef.current.pause();
     setIsMuted(!isMuted);
   };
 
@@ -50,24 +46,45 @@ export default function App() {
   return (
     <div className="relative min-h-screen flex justify-center items-center">
       <AnimatedBackground />
-        {/* Background Music */}
+
+      {/* Background Music */}
       <audio ref={audioRef} src={kidMusic} loop autoPlay />
-      {/* Mute/Unmute Button */}
-        <button
-            onClick={toggleMusic}
-            className="music-button"
-            title={isMuted ? "Unmute Music" : "Mute Music"}
-          >
-            {isMuted ? "🔇" : "🔊"}
-          </button>
+
+      {/* Music Toggle */}
+      <button onClick={toggleMusic} className="music-button">
+        {isMuted ? "🔇" : "🔊"}
+        <p>Tap on it</p>
+      </button>
 
       <div className="app-container relative w-full max-w-3xl p-6 bg-white bg-opacity-90 rounded-3xl shadow-2xl flex flex-col items-center text-center z-10">
-        {step === 0 && <IntroScreen onNext={() => setStep(1)} />}
-        {step === 1 && <ExerciseDragDrop onNext={(s) => handleNext(s, 3)} />}
-        {step === 2 && <ExerciseQuiz onNext={(s) => handleNext(s, 5)} />}
-        {step === 3 && <StoryActivity onNext={() => setStep(4)} />}
-        {step === 4 && <SentimentExplorer onNext={() => setStep(5)} />}
-        {step === 5 && <ResultScreen score={score} total={total} onRestart={() => setStep(0)} />}
+        <Routes>
+          {/* Intro Page */}
+          <Route path="/" element={<IntroScreen />} />
+
+          {/* Quiz Adventure Flow */}
+          <Route
+            path="/quiz"
+            element={
+              <>
+                {step === 1 && <ExerciseDragDrop onNext={(s) => handleNext(s, 3)} />}
+                {step === 2 && <ExerciseQuiz onNext={(s) => handleNext(s, 5)} />}
+                {step === 3 && <StoryActivity onNext={() => setStep(4)} />}
+                {step === 4 && (
+                  <ResultScreen
+                    score={score}
+                    total={total}
+                    onRestart={() => setStep(1)} // restart adventure
+                  />
+                )}
+              </>
+            }
+          />
+
+          {/* Mini Games Hub + Coloring */}
+            <Route path="/minigames" element={<MiniGames />} />
+            <Route path="/minigames/fruit-coloring" element={<FruitColoring />} />
+
+        </Routes>
       </div>
     </div>
   );

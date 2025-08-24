@@ -1,4 +1,4 @@
-import React from "react";
+// src/components/AnimatedBackground.jsx
 import "../AnimatedBackground.css"; // We'll add animation CSS here
 
 const animals = ["🐶", "🐱", "🦊", "🐼", "🐨", "🐸", "🦁", "🐰", "🐵","✨","💕","🦄","🐬","🐚"];

@@ -1,3 +1,4 @@
+// /src/components/ExerciseQuiz.jsx
 import { useState } from "react";
 import Celebration from "./Celebration";
 
@@ -41,7 +42,7 @@ export default function ExerciseQuiz({ onNext }) {
   return (
     <div className="text-center max-w-2xl relative p-6">
       {/* Celebration */}
-      <Celebration trigger={isCorrect} duration={1200} />
+      <Celebration trigger={isCorrect} duration={2000} />
 
       <h2 className="text-3xl font-bold mb-6">Quiz Time 📝</h2>
       <p className="text-xl mb-6">{quizQuestions[currentIndex].question}</p>

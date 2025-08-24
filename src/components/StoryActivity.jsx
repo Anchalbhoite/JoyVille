@@ -42,7 +42,7 @@ export default function StoryActivity({ onNext }) {
   return (
     <div className="flex flex-col items-center justify-center w-full max-w-2xl p-6">
       {/* Celebration */}
-      <Celebration trigger={isCorrect} duration={1200} />
+      <Celebration trigger={isCorrect} duration={2000} />
 
       <h1 className="text-3xl font-bold mb-6 text-purple-700 animate-pulse">📖 Story Time!</h1>
       <p className="text-xl mb-6 leading-relaxed text-center">

@@ -1,5 +1,6 @@
-import React from "react";
+
 import Celebration from "./Celebration";
+
 
 export default function ResultScreen({ score, total, onRestart }) {
   return (
@@ -9,7 +10,7 @@ export default function ResultScreen({ score, total, onRestart }) {
 
       <h2 className="text-4xl font-bold mb-6">🎉 Adventure Complete! 🎉</h2>
       <p className="text-2xl mb-4">
-        You scored <b>{score}</b> out of <b>{total}</b>
+        You scored <b>{score+1}</b> out of <b>{total}</b>
       </p>
       <p className="text-lg mb-6">
         Great job! You helped Harry, Sally, and Nicky learn about Sentiments. 🚀
@@ -21,6 +22,7 @@ export default function ResultScreen({ score, total, onRestart }) {
       >
         Play Again 🔄
       </button>
+      
     </div>
   );
 }
