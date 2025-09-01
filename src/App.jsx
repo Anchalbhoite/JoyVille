@@ -53,7 +53,7 @@ export default function App() {
       {/* Music Toggle */}
       <button onClick={toggleMusic} className="music-button">
         {isMuted ? "🔇" : "🔊"}
-        <p>Tap on it</p>
+        
       </button>
 
       <div className="app-container relative w-full max-w-3xl p-6 bg-white bg-opacity-90 rounded-3xl shadow-2xl flex flex-col items-center text-center z-10">
